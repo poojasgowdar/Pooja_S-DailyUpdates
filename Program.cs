@@ -1,30 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Async_Ex2
+namespace DemoProjectForGit
 {
     internal class Program
     {
-            static async Task Main(string[] args)
-            {
-                Console.WriteLine("Fetching data...");
+        public delegate string dDemo(string name);
+        //Static Method
+        public string Message(string name)
+        {
+            return "Hello " + name + " Welcome to You";
+        }
+        static void Main(string[] args)
+        {
 
-                // Call an asynchronous method
-                string result = await FetchDataAsync();
+            Program p = new Program();
+            dDemo d = new dDemo(p.Message);
+            //dDemo d = new dDemo(Program.Message);
+            //string msg = d.Invoke("Pranaya");
+            //Console.WriteLine(msg);
+            string msg = d.Invoke("Praya");
+            Console.WriteLine(msg);
+            Console.ReadKey();
 
-                Console.WriteLine(result);
-                Console.WriteLine("Process complete.");
-            }
-           static async Task<string> FetchDataAsync()
-          {
-            // Simulate a delay (e.g., fetching data from a database or API)
-            await Task.Delay(3000); // Simulate a 3-second delay
 
-            return "Data fetched successfully!";
-          }
-
+        }
     }
 }
+
+
+
