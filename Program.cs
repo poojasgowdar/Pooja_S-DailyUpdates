@@ -1,24 +1,19 @@
 ﻿using System;
-namespace AnonymousEx
-
-
-    public class DelegateTest
+namespace AnonymousMethod_Ex
+{
+    internal class Program
     {
-        public delegate void DelegateTestDelegate();
 
-        public static void Greetings()
-        {
-            Console.WriteLine("Hello Good Morning");
-        }
+        public delegate void Result(string message);
 
         static void Main(string[] args)
         {
-            DelegateTestDelegate dt = Greetings;
-            dt();
+            Result s = delegate (string message)
+            {
+                Console.WriteLine("Good Morning " +message);
+            };
+            s("John");
             Console.ReadKey();
         }
     }
-   
-
-    
 }
